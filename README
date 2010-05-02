@@ -1,1 +1,13 @@
-Okay, GITHUB forced me to do this README ;), so everything important is written in the file "license_and_readme.txt".
+Hi together, this will be 'falling', a simple arcade game, where you have to collect all coins and avoid the blocks. You are in the role of a blue egg with a funny spot above the eyes.
+
+The state of the game is WIP now. At the moment, I'm testing qubodups idea of merging clouds. The application is written in C using SDL and SDL_Image. I'm learning C at the moment, so the source code might look like a mess. You can build it with
+
+gcc $(sdl-config --cflags --libs) -lSDL_image -o falling main.c clouds.c filehandler.c
+
+if you are in the 'falling' directory. A buildsystem is not available at the moment.
+It should compile on all platforms supporting SDL, SDL_Image and the C standard libs.
+
+For reading the license, open license.txt.
+
+
+
