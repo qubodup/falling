@@ -52,10 +52,10 @@ struct Cloud CloudArray[12] = {
 {1,45,280}
 };
 
-	SDL_Surface* CloudBigImage;
-	SDL_Surface* CloudImage;
-	SDL_Surface* CloudBigLineImage;
-	SDL_Surface* CloudLineImage;
+SDL_Surface* CloudBigImage;
+SDL_Surface* CloudImage;
+SDL_Surface* CloudBigLineImage;
+SDL_Surface* CloudLineImage;
 
 
 
@@ -74,12 +74,12 @@ void DrawClouds(SDL_Surface* target){
 	{
 		Dest.x = CloudArray[i].XPosition;
 		Dest.y = CloudArray[i].YPosition;
-		if (CloudArray[i].Type = 1)
+		if (CloudArray[i].Type == 1)
 		{
 			Dest.w = CloudArray[i].XPosition + 63;
 			Dest.h = CloudArray[i].YPosition + 32;
 			SDL_BlitSurface(CloudBigLineImage, NULL,target, &Dest);
-		} else if (CloudArray[i].Type = 0) {
+		} else if (CloudArray[i].Type == 0) {
 			Dest.w = CloudArray[i].XPosition + 45;
 			Dest.h = CloudArray[i].YPosition + 23;
 			SDL_BlitSurface(CloudLineImage, NULL,target, &Dest);
@@ -89,12 +89,12 @@ void DrawClouds(SDL_Surface* target){
 	{
 		Dest.x = CloudArray[i].XPosition+2;
 		Dest.y = CloudArray[i].YPosition+2;
-		if (CloudArray[i].Type = 1)
+		if (CloudArray[i].Type == 1)
 		{
 			Dest.w = CloudArray[i].XPosition + 59;
 			Dest.h = CloudArray[i].YPosition + 28;
 			SDL_BlitSurface(CloudBigImage, NULL,target, &Dest);
-		} else if (CloudArray[i].Type = 0) {
+		} else if (CloudArray[i].Type == 0) {
 			Dest.w = CloudArray[i].XPosition + 41;
 			Dest.h = CloudArray[i].YPosition + 19;
 			SDL_BlitSurface(CloudImage, NULL,target, &Dest);
