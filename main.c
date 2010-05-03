@@ -25,11 +25,13 @@
 #include <stdlib.h>
 #include "filehandler.h"
 #include "clouds.h"
+#include "birds.h"
 
 void DrawBackground (SDL_Surface *target)
 {
 	SDL_FillRect(target,NULL,SDL_MapRGB(target->format, 200, 222, 255));
 	DrawClouds(target);
+	DrawBirds(target);
 }
 
 
@@ -63,6 +65,7 @@ int main(){
 	SDL_Surface* coinImage = LoadImage("coin.png");
 	SDL_Surface* lifeImage = LoadImage("life.png");
 	LoadCloudImages();
+	LoadBirdImages();
 	printf("Images loaded!\n");
 	/*Loading finished*/
 	/*The main loop variables*/
@@ -89,6 +92,7 @@ int main(){
 			}
 		}
 		MoveClouds();
+		MoveBirds();
 		DrawBackground(screen);
 		SDL_Flip(screen);
 		SDL_Delay(10);
@@ -100,6 +104,7 @@ int main(){
 	FreeImage(coinImage);
 	FreeImage(lifeImage);
 	FreeCloudImages();
+	FreeBirdImages();
 	printf("Bye-bye!\n");
 	exit(0);
 }
