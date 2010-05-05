@@ -27,8 +27,8 @@
 int GlobalTicker;
 
 enum BirdType{
-NORMAL = 0,
-BIG
+LEFT = 0,
+RIGHT
 };
 
 struct Bird{
@@ -45,34 +45,43 @@ struct Bird BirdArray[4] = {
 {1,0,45,450}
 };
 
-SDL_Surface* BirdA1Image;
-SDL_Surface* BirdA2Image;
-SDL_Surface* BirdB1Image;
-SDL_Surface* BirdB2Image;
+SDL_Surface* BirdR1Image;
+SDL_Surface* BirdR2Image;
+SDL_Surface* BirdR3Image;
+SDL_Surface* BirdL1Image;
+SDL_Surface* BirdL2Image;
+SDL_Surface* BirdL3Image;
+
 
 void LoadBirdImages(){
-	BirdA1Image = LoadImage ("bird_a_1.png");
-	BirdA2Image = LoadImage ("bird_a_2.png");
-	BirdB1Image = LoadImage ("bird_b_1.png");
-	BirdB2Image = LoadImage ("bird_b_2.png");
+	BirdR1Image = LoadImage ("cutebird_right_1.png");
+	BirdR2Image = LoadImage ("cutebird_right_2.png");
+	BirdR3Image = LoadImage ("cutebird_right_3.png");
+	BirdL1Image = LoadImage ("cutebird_left_1.png");
+	BirdL2Image = LoadImage ("cutebird_left_2.png");
+	BirdL3Image = LoadImage ("cutebird_left_3.png");
+
 }
 
 void FreeBirdImages(){
-	FreeImage (BirdA1Image);
-	FreeImage (BirdA2Image);
-	FreeImage (BirdB1Image);
-	FreeImage (BirdB2Image);
+	FreeImage (BirdR1Image);
+	FreeImage (BirdR2Image);
+	FreeImage (BirdR3Image);
+	FreeImage (BirdL1Image);
+	FreeImage (BirdL2Image);
+	FreeImage (BirdL3Image);
+
 }
 
 void MoveBirds(){
-	GlobalTicker++;
-	BirdArray[0].XPosition ++;
-	BirdArray[1].XPosition --;
+	GlobalTicker++;//Hehe, less work than a for loop ;)
+	BirdArray[0].XPosition --;
+	BirdArray[1].XPosition ++;
 	BirdArray[2].XPosition --;
 	BirdArray[3].XPosition ++;
 	if (GlobalTicker == 4000){GlobalTicker = 0;}
-	if (GlobalTicker == 800){BirdArray[0].XPosition = -26;
-	} else if (GlobalTicker == 1600){BirdArray[1].XPosition = 320;
+	if (GlobalTicker == 800){BirdArray[0].XPosition = 320;
+	} else if (GlobalTicker == 1600){BirdArray[1].XPosition = -26;
 	} else if (GlobalTicker == 2400){BirdArray[2].XPosition = 320;
 	} else if (GlobalTicker == 3200){BirdArray[3].XPosition = -26;}
 	int i;
@@ -88,19 +97,27 @@ void DrawBirds(SDL_Surface *target){
 	for (i = 0; i < 4;i++){
 		Dest.x = BirdArray[i].XPosition;
 		Dest.y = BirdArray[i].YPosition;
-		Dest.w = Dest.x + 26;
-		Dest.h = Dest.y + 8;
-		if (BirdArray[i].Type == 0){
-			if (BirdArray[i].LocalTicker < 10){
-				SDL_BlitSurface(BirdB1Image, NULL,target, &Dest);
-			} else {
-				SDL_BlitSurface(BirdB2Image, NULL,target, &Dest);
+		Dest.w = Dest.x + 82;
+		Dest.h = Dest.y + 49;
+		if (BirdArray[i].Type == 0){//Lefttype
+			if (BirdArray[i].LocalTicker < 5){
+				SDL_BlitSurface(BirdL1Image, NULL,target, &Dest);
+			} else if (BirdArray[i].LocalTicker >= 5 && BirdArray[i].LocalTicker < 10 ) {
+				SDL_BlitSurface(BirdL2Image, NULL,target, &Dest);
+			} else if (BirdArray[i].LocalTicker >= 10 && BirdArray[i].LocalTicker < 15) {
+				SDL_BlitSurface(BirdL3Image, NULL,target, &Dest);
+			} else if (BirdArray[i].LocalTicker >= 15) {
+				SDL_BlitSurface(BirdL2Image, NULL,target, &Dest);
 			}
 		} else if (BirdArray[i].Type == 1){
-			if (BirdArray[i].LocalTicker < 10){
-				SDL_BlitSurface(BirdA1Image, NULL,target, &Dest);
-			} else {
-				SDL_BlitSurface(BirdA2Image, NULL,target, &Dest);
+			if (BirdArray[i].LocalTicker < 5){
+				SDL_BlitSurface(BirdR1Image, NULL,target, &Dest);
+			} else if (BirdArray[i].LocalTicker >= 5 && BirdArray[i].LocalTicker < 10 ) {
+				SDL_BlitSurface(BirdR2Image, NULL,target, &Dest);
+			} else if (BirdArray[i].LocalTicker >= 10 && BirdArray[i].LocalTicker < 15) {
+				SDL_BlitSurface(BirdR3Image, NULL,target, &Dest);
+			} else if (BirdArray[i].LocalTicker >= 15) {
+				SDL_BlitSurface(BirdR2Image, NULL,target, &Dest);
 			}
 		}
 	}
