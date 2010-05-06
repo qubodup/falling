@@ -36,7 +36,7 @@ int XPosition;
 int YPosition;
 };
 
-/*The 12 clouds in the background*/
+/*The 16 clouds in the background*/
 struct Cloud CloudArray[16] = {
 {0,20,42},
 {1,100,200},
@@ -45,7 +45,7 @@ struct Cloud CloudArray[16] = {
 {0,188,35},
 {1,3,66},
 {0,188,166},
-{1,13,11},
+{1,13,350},
 {1,222,311},
 {0,99,455},
 {0,122,150},
@@ -60,7 +60,7 @@ SDL_Surface* CloudBigImage;
 SDL_Surface* CloudImage;
 SDL_Surface* CloudBigLineImage;
 SDL_Surface* CloudLineImage;
-
+int CloudTicker;
 
 
 
@@ -110,22 +110,21 @@ void DrawClouds(SDL_Surface* target){
 
 void MoveClouds(){
 	int i = 0;
-	for (i = 0;i<16;i++){
-		if (i < 8){
-			if (CloudArray[i].XPosition > 320){CloudArray[i].XPosition = -63;}
-			CloudArray[i].XPosition++;
-		}else if (i > 8){
-			if (CloudArray[i].XPosition < -63){CloudArray[i].XPosition = 320;}
-			CloudArray[i].XPosition--;
-		}
-		if (CloudArray[i].YPosition < -32){CloudArray[i].YPosition =480;}
-		if (i < 4){
-			CloudArray[i].YPosition--;
-		}else if (i >= 4 && i < 12){
-			CloudArray[i].YPosition -= 2;
-		}else if (i>= 12){
+	if (CloudTicker == 0) {
+		CloudTicker = 1;
+		for (i = 0;i<16;i++){
+			if (i < 8){
+				if (CloudArray[i].XPosition > 320){CloudArray[i].XPosition = -63;}
+				CloudArray[i].XPosition++;
+			}else if (i >= 8){
+				if (CloudArray[i].XPosition < -63){CloudArray[i].XPosition = 320;}
+				CloudArray[i].XPosition--;
+			}
+			if (CloudArray[i].YPosition < -32){CloudArray[i].YPosition =480;}
 			CloudArray[i].YPosition--;
 		}
+	}else{
+		CloudTicker = 0;
 	}
 }
 
