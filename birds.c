@@ -81,9 +81,9 @@ void MoveBirds(){
 	BirdArray[3].XPosition ++;
 	if (GlobalTicker == 4000){GlobalTicker = 0;}
 	if (GlobalTicker == 800){BirdArray[0].XPosition = 320;
-	} else if (GlobalTicker == 1600){BirdArray[1].XPosition = -26;
+	} else if (GlobalTicker == 1600){BirdArray[1].XPosition = -82;
 	} else if (GlobalTicker == 2400){BirdArray[2].XPosition = 320;
-	} else if (GlobalTicker == 3200){BirdArray[3].XPosition = -26;}
+	} else if (GlobalTicker == 3200){BirdArray[3].XPosition = -82;}
 	int i;
 	for (i = 0; i < 4;i++){
 		if (BirdArray[i].LocalTicker == 20){BirdArray[i].LocalTicker =0;}
