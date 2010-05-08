@@ -38,19 +38,19 @@ int YPosition;
 
 /*The 16 clouds in the background*/
 struct Cloud CloudArray[16] = {
-{0,20,42},
+{0,20,32},
 {1,100,200},
-{1,320,240},
+{1,320,230},
 {0,211,420},
 {0,188,35},
 {1,3,66},
-{0,188,166},
+{0,88,166},
 {1,13,350},
-{1,222,311},
+{1,232,311},
 {0,99,455},
-{0,122,150},
+{0,122,140},
 {1,220,240},
-{0,211,320},
+{0,221,350},
 {0,122,315},
 {1,35,43},
 {1,45,280}
@@ -114,15 +114,21 @@ void MoveClouds(){
 		CloudTicker = 1;
 		for (i = 0;i<16;i++){
 			if (i < 8){
-				if (CloudArray[i].XPosition > 320){CloudArray[i].XPosition = -63;}
+				if (CloudArray[i].XPosition > 320){
+					CloudArray[i].XPosition = -63;
+					CloudArray[i].YPosition -=2;
+					if (CloudArray[i].YPosition < -32) {CloudArray[i].YPosition =480;}
+				}
 				CloudArray[i].XPosition++;
 			}else if (i >= 8){
-				if (CloudArray[i].XPosition < -63){CloudArray[i].XPosition = 320;}
+				if (CloudArray[i].XPosition < -63){
+					CloudArray[i].XPosition = 320;
+					CloudArray[i].YPosition +=2;
+					if (CloudArray[i].YPosition > 480) {CloudArray[i].YPosition =-32;}
+				}
 				CloudArray[i].XPosition--;
 			}
-			if (CloudArray[i].YPosition < -32){CloudArray[i].YPosition =480;}
-			CloudArray[i].YPosition--;
-		}
+		}//of for
 	}else{
 		CloudTicker = 0;
 	}
