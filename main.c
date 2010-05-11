@@ -33,8 +33,6 @@
 void DrawBackground (SDL_Surface *target)
 {
 	SDL_FillRect(target,NULL,SDL_MapRGB(target->format, 200, 222, 255));
-	DrawClouds(target);
-	DrawBirds(target);
 }
 
 
@@ -73,12 +71,16 @@ int main(){
 	/*Loading finished*/
 	/*The main loop variables*/
 	int running = 1;
+	int klicked = 0;
+	int scene = 1;
+	/*1. choose player 2. move player 3. game*/  
 	SDL_Event event; 
 	/*The main loop*/
 	while (running == 1)
 	{
 		while (SDL_PollEvent (&event))
 		{
+			klicked = 0;
 			switch (event.type)
 			{
 				case SDL_KEYDOWN:
@@ -87,16 +89,49 @@ int main(){
 						running = 0;
 					}
 				break;
+
 				case SDL_QUIT:
 					running = 0;
 				break;
+				case SDL_MOUSEBUTTONDOWN:
+					klicked = 1;
+				event.motion.x, 
+				event.motion.y, 
+				event.motion.xrel, 
+				event.motion.yrel);
+				break;
+
 				default:
 				break;
-			}
-		}
+			}//end switch
+		}//end event polling
+		switch (scene)
+		{
+			case 1:
+				DrawBackground(screen);
+				DrawSelection(screen);
+			break;
+			case 2:
+				MoveClouds();
+				MoveBirds();
+				DrawBackground(screen);
+				DrawClouds(screen);
+				DrawBirds(screen);
+			break;
+			case 3:
+				MoveClouds();
+				MoveBirds();
+				DrawBackground(screen);
+				DrawClouds(screen);
+				DrawBirds(screen);
+			break;
+		}//end switch (scene)
 		MoveClouds();
 		MoveBirds();
 		DrawBackground(screen);
+		DrawClouds(screen);
+		DrawBirds(screen);
+		DrawSelection(screen);
 		SDL_Flip(screen);
 		SDL_Delay(10);
 	}

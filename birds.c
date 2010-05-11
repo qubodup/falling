@@ -51,6 +51,7 @@ SDL_Surface* BirdR3Image;
 SDL_Surface* BirdL1Image;
 SDL_Surface* BirdL2Image;
 SDL_Surface* BirdL3Image;
+SDL_Rect Dest;
 
 
 void LoadBirdImages(){
@@ -92,7 +93,6 @@ void MoveBirds(){
 }
 
 void DrawBirds(SDL_Surface *target){
-	SDL_Rect Dest;
 	int i;
 	for (i = 0; i < 4;i++){
 		Dest.x = BirdArray[i].XPosition;

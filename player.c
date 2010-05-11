@@ -23,17 +23,28 @@
 #include "SDL_image.h"
 #include <stdlib.h>
 #include "filehandler.h"
+//Global variables to improve performance
+SDL_Surface* SelectedEggImage = NULL;
+SDL_Surface* Egg1Image = NULL;
+SDL_Surface* Egg2Image = NULL;
+SDL_Surface* Egg3Image = NULL;
+SDL_Surface* Egg4Image = NULL;
 
-SDL_Surface* Egg1Image;
-SDL_Surface* Egg2Image;
-SDL_Surface* Egg3Image;
-SDL_Surface* Egg4Image;
+SDL_Rect EGame;//The player position
+SDL_Rect E1,E2,E3,E4;//The selection positions
+
+
 
 void LoadPlayerImages(){
 	Egg1Image = LoadImage ("egg.png");
 	Egg2Image = LoadImage ("egg2.png");
 	Egg3Image = LoadImage ("egg3.png");
 	Egg4Image = LoadImage ("egg4.png");
+	EGame.h = 42; EGame.w = 32;//Also preparing the positions
+	E1.x = 110; E1.y = 110; E1.h = 42; E1.w = 32;
+	E2.x = 178; E2.y = 110; E2.h = 42; E2.w = 32;
+	E3.x = 110; E3.y = 168; E3.h = 42; E3.w = 32;
+	E4.x = 178; E4.y = 168; E4.h = 42; E4.w = 32;
 }
 
 void FreePlayerImages(){
@@ -42,3 +53,16 @@ void FreePlayerImages(){
 	FreeImage(Egg3Image);
 	FreeImage(Egg4Image);
 }
+
+void ChoosePlayerImage (int x, int y){
+	
+}
+
+void DrawSelection (SDL_Surface *target){
+	SDL_BlitSurface(Egg1Image,NULL,target,&E1);
+	SDL_BlitSurface(Egg2Image,NULL,target,&E2);
+	SDL_BlitSurface(Egg3Image,NULL,target,&E3);
+	SDL_BlitSurface(Egg4Image,NULL,target,&E4);
+
+}
+void DrawPlayer (SDL_Surface *target, int x, int y){}

@@ -60,6 +60,7 @@ SDL_Surface* CloudBigImage;
 SDL_Surface* CloudImage;
 SDL_Surface* CloudBigLineImage;
 SDL_Surface* CloudLineImage;
+SDL_Rect Dest;
 int CloudTicker;
 
 
@@ -72,7 +73,6 @@ void LoadCloudImages(){
 }
 
 void DrawClouds(SDL_Surface* target){
-	SDL_Rect Dest;
 	int i = 0;
 	for (i = 0; i < 16;i++)//Shapes...
 	{

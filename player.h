@@ -20,7 +20,9 @@
 
 #ifndef PLAYER_H
 #define PLAYER_H
-
+void ChoosePlayerImage(int x, int y);//Sets the pointer to the choosen player image
+void DrawSelection(SDL_Surface *target);//Draws all 4 eggs
+void DrawPlayer(SDL_Surface *target, int x, int y);
 void LoadPlayerImages();
 void FreePlayerImages();
 
