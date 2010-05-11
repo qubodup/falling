@@ -26,6 +26,9 @@
 #include "filehandler.h"
 #include "clouds.h"
 #include "birds.h"
+#include "player.h"
+#include "obstacles.h"
+#include "lifes.h"
 
 void DrawBackground (SDL_Surface *target)
 {
@@ -59,11 +62,11 @@ int main(){
 	}
 
 	/*All the initialization stuff*/
-	/*Loading all Images follow...*/
-	SDL_Surface* playerImage = LoadImage("player.png");
-	SDL_Surface* blockImage = LoadImage("block.png");
-	SDL_Surface* coinImage = LoadImage("coin.png");
-	SDL_Surface* lifeImage = LoadImage("life.png");
+	SDL_WM_SetCaption("Falling - An anti-gravity game","Falling Pre-Alpha");
+	/*Loading all Images follows...*/
+	LoadPlayerImages();
+	LoadObstacleImages();
+	LoadLifeImages();
 	LoadCloudImages();
 	LoadBirdImages();
 	printf("Images loaded!\n");
@@ -99,10 +102,9 @@ int main(){
 	}
 	/*Ending of main loop*/
 	/*Freeing all data*/
-	FreeImage(playerImage);
-	FreeImage(blockImage);
-	FreeImage(coinImage);
-	FreeImage(lifeImage);
+	FreePlayerImages();
+	FreeObstacleImages();
+	FreeLifeImages();
 	FreeCloudImages();
 	FreeBirdImages();
 	printf("Bye-bye!\n");
