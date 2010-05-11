@@ -31,6 +31,23 @@ SDL_Surface* Egg3Image = NULL;
 SDL_Surface* Egg4Image = NULL;
 
 SDL_Rect EGame;//The player position
+/*Setter and getter*/
+void SetPlayerX (int x){
+EGame.x = x;
+}
+
+void SetPlayerY (int y){
+EGame.y = y;
+}
+
+int GetPlayerX(){
+return EGame.x; 
+}
+
+int GetPlayerY(){
+return EGame.y;
+}
+
 SDL_Rect E1,E2,E3,E4;//The selection positions
 
 
@@ -54,15 +71,37 @@ void FreePlayerImages(){
 	FreeImage(Egg4Image);
 }
 
-void ChoosePlayerImage (int x, int y){
-	
+int ChoosePlayerImage (int x, int y){
+	if (x > 110 && x < 142 && y > 110 && y < 152){
+		EGame.x = E1.x;
+		EGame.y = E1.y;
+		SelectedEggImage = Egg1Image;
+		return 1;
+	} else if (x > 178 && x < 210 && y > 110 && y < 152){
+		EGame.x = E2.x;
+		EGame.y = E2.y;
+		SelectedEggImage = Egg2Image;
+		return 1;
+	} else if(x > 110 && x < 142 && y > 168 && y < 200){
+		EGame.x = E3.x;
+		EGame.y = E3.y;
+		SelectedEggImage = Egg3Image;
+		return 1;
+	} else if(x > 178 && x < 210 && y > 168 && y < 200){
+		EGame.x = E4.x;
+		EGame.y = E4.y;
+		SelectedEggImage = Egg4Image;
+		return 1;
+	} else {return 0;} 
 }
 
-void DrawSelection (SDL_Surface *target){
+void DrawSelection (SDL_Surface *target){//Draws the four eggs
 	SDL_BlitSurface(Egg1Image,NULL,target,&E1);
 	SDL_BlitSurface(Egg2Image,NULL,target,&E2);
 	SDL_BlitSurface(Egg3Image,NULL,target,&E3);
 	SDL_BlitSurface(Egg4Image,NULL,target,&E4);
 
 }
-void DrawPlayer (SDL_Surface *target, int x, int y){}
+void DrawPlayer (SDL_Surface *target){
+	SDL_BlitSurface(SelectedEggImage,NULL,target,&EGame);
+}

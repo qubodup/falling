@@ -95,10 +95,6 @@ int main(){
 				break;
 				case SDL_MOUSEBUTTONDOWN:
 					klicked = 1;
-				event.motion.x, 
-				event.motion.y, 
-				event.motion.xrel, 
-				event.motion.yrel);
 				break;
 
 				default:
@@ -110,10 +106,16 @@ int main(){
 			case 1:
 				DrawBackground(screen);
 				DrawSelection(screen);
+				if (klicked == 1){
+					if (ChoosePlayerImage(event.motion.x,event.motion.y) == 1){
+						scene = 2;
+					}
+				}
 			break;
 			case 2:
 				MoveClouds();
 				MoveBirds();
+				DrawPlayer(screen);
 				DrawBackground(screen);
 				DrawClouds(screen);
 				DrawBirds(screen);
@@ -126,12 +128,6 @@ int main(){
 				DrawBirds(screen);
 			break;
 		}//end switch (scene)
-		MoveClouds();
-		MoveBirds();
-		DrawBackground(screen);
-		DrawClouds(screen);
-		DrawBirds(screen);
-		DrawSelection(screen);
 		SDL_Flip(screen);
 		SDL_Delay(10);
 	}
