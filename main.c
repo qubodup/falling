@@ -115,10 +115,10 @@ int main(){
 			case 2:
 				MoveClouds();
 				MoveBirds();
-				DrawPlayer(screen);
 				DrawBackground(screen);
 				DrawClouds(screen);
 				DrawBirds(screen);
+				DrawPlayer(screen);
 			break;
 			case 3:
 				MoveClouds();

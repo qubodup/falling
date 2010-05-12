@@ -24,7 +24,7 @@
 #include <stdlib.h>
 #include "filehandler.h"
 //Global variables to improve performance
-SDL_Surface* SelectedEggImage = NULL;
+SDL_Surface* SelectedEggImage;
 SDL_Surface* Egg1Image = NULL;
 SDL_Surface* Egg2Image = NULL;
 SDL_Surface* Egg3Image = NULL;
@@ -104,4 +104,5 @@ void DrawSelection (SDL_Surface *target){//Draws the four eggs
 }
 void DrawPlayer (SDL_Surface *target){
 	SDL_BlitSurface(SelectedEggImage,NULL,target,&EGame);
+	
 }
