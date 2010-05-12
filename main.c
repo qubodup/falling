@@ -113,12 +113,16 @@ int main(){
 				}
 			break;
 			case 2:
-				MoveClouds();
-				MoveBirds();
 				DrawBackground(screen);
-				DrawClouds(screen);
-				DrawBirds(screen);
 				DrawPlayer(screen);
+				if (GetPlayerX() <144){SetPlayerX ( GetPlayerX()+1);}
+				if (GetPlayerX() >144){SetPlayerX ( GetPlayerX()-1);}
+				if (GetPlayerY() <139){SetPlayerY ( GetPlayerY()+1);}
+				if (GetPlayerY() >139){SetPlayerY ( GetPlayerY()-1);}
+				if (GetPlayerY() == 139 && GetPlayerX() == 144){
+					scene = 3;
+					SDL_WarpMouse(144,139);
+				}
 			break;
 			case 3:
 				MoveClouds();
@@ -126,6 +130,7 @@ int main(){
 				DrawBackground(screen);
 				DrawClouds(screen);
 				DrawBirds(screen);
+				DrawPlayer(screen);
 			break;
 		}//end switch (scene)
 		SDL_Flip(screen);

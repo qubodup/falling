@@ -25,5 +25,9 @@ void DrawSelection(SDL_Surface *target);//Draws all 4 eggs
 void DrawPlayer(SDL_Surface *target);
 void LoadPlayerImages();
 void FreePlayerImages();
+int GetPlayerX();
+int GetPlayerY();
+void SetPlayerX(int x);
+void SetPlayerY(int y);
 
 #endif //PLAYER_H
