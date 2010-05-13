@@ -30,7 +30,7 @@
 #include "obstacles.h"
 #include "lifes.h"
 
-void DrawBackground (SDL_Surface *target)
+void DrawBackground (SDL_Surface *target)//draws the blue background
 {
 	SDL_FillRect(target,NULL,SDL_MapRGB(target->format, 200, 222, 255));
 }
@@ -72,8 +72,7 @@ int main(){
 	/*The main loop variables*/
 	int running = 1;
 	int klicked = 0;
-	int scene = 1;
-	/*1. choose player 2. move player 3. game*/  
+	int scene = 1; 
 	SDL_Event event; 
 	/*The main loop*/
 	while (running == 1)
@@ -103,7 +102,7 @@ int main(){
 		}//end event polling
 		switch (scene)
 		{
-			case 1:
+			case 1://The selection screen
 				DrawBackground(screen);
 				DrawSelection(screen);
 				if (klicked == 1){
@@ -112,7 +111,7 @@ int main(){
 					}
 				}
 			break;
-			case 2:
+			case 2://The fading in scene
 				DrawBackground(screen);
 				DrawPlayer(screen);
 				if (GetPlayerX() <144){SetPlayerX ( GetPlayerX()+1);}
@@ -124,7 +123,7 @@ int main(){
 					SDL_WarpMouse(144,139);
 				}
 			break;
-			case 3:
+			case 3://The game itself
 				MoveClouds();
 				MoveBirds();
 				DrawBackground(screen);

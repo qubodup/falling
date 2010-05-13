@@ -24,7 +24,7 @@
 #include <stdlib.h>
 #include "filehandler.h"
 
-SDL_Surface* BlockImage;
+SDL_Surface* BlockImage = NULL;
 
 void LoadObstacleImages(){
 	BlockImage = LoadImage ("block.png");

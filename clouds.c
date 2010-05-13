@@ -56,12 +56,12 @@ struct Cloud CloudArray[16] = {
 {1,445,280}
 };
 
-SDL_Surface* CloudBigImage;
-SDL_Surface* CloudImage;
-SDL_Surface* CloudBigLineImage;
-SDL_Surface* CloudLineImage;
-SDL_Rect Dest;
-int CloudTicker;
+SDL_Surface* CloudBigImage = NULL;
+SDL_Surface* CloudImage = NULL;
+SDL_Surface* CloudBigLineImage = NULL;
+SDL_Surface* CloudLineImage = NULL;
+SDL_Rect Dest;//the position the clouds are rendered
+int CloudTicker;//This is necessary to keep the clouds slower than the birds!
 
 
 
@@ -90,7 +90,7 @@ void DrawClouds(SDL_Surface* target){
 			SDL_BlitSurface(CloudLineImage, NULL,target, &Dest);
 		}
 	}
-	for (i = 0; i < 16;i++)//...and Bodies.
+	for (i = 0; i < 16;i++)//...and Bodies, to get that merge effect.
 	{
 		Dest.x = CloudArray[i].XPosition+2;
 		Dest.y = CloudArray[i].YPosition+2;

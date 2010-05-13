@@ -24,7 +24,7 @@
 #include <stdlib.h>
 #include "filehandler.h"
 
-int GlobalTicker;
+int GlobalTicker;//Made for the order of the birds
 
 enum BirdType{
 LEFT = 0,
@@ -45,13 +45,13 @@ struct Bird BirdArray[4] = {
 {1,0,-145,450}
 };
 
-SDL_Surface* BirdR1Image;
-SDL_Surface* BirdR2Image;
-SDL_Surface* BirdR3Image;
-SDL_Surface* BirdL1Image;
-SDL_Surface* BirdL2Image;
-SDL_Surface* BirdL3Image;
-SDL_Rect Dest;
+SDL_Surface* BirdR1Image = NULL;
+SDL_Surface* BirdR2Image = NULL;
+SDL_Surface* BirdR3Image = NULL;
+SDL_Surface* BirdL1Image = NULL;
+SDL_Surface* BirdL2Image = NULL;
+SDL_Surface* BirdL3Image = NULL;
+SDL_Rect Dest;//the position the birds are rendered
 
 
 void LoadBirdImages(){
@@ -75,7 +75,7 @@ void FreeBirdImages(){
 }
 
 void MoveBirds(){
-	GlobalTicker++;//Hehe, less work than a for loop ;)
+	GlobalTicker++;//Hehehe, less work than a for loop ;)
 	BirdArray[0].XPosition --;
 	BirdArray[1].XPosition ++;
 	BirdArray[2].XPosition --;
@@ -99,7 +99,7 @@ void DrawBirds(SDL_Surface *target){
 		Dest.y = BirdArray[i].YPosition;
 		Dest.w = Dest.x + 82;
 		Dest.h = Dest.y + 49;
-		if (BirdArray[i].Type == 0){//Lefttype
+		if (BirdArray[i].Type == 0){//Left-type
 			if (BirdArray[i].LocalTicker < 5){
 				SDL_BlitSurface(BirdL1Image, NULL,target, &Dest);
 			} else if (BirdArray[i].LocalTicker >= 5 && BirdArray[i].LocalTicker < 10 ) {
@@ -109,7 +109,7 @@ void DrawBirds(SDL_Surface *target){
 			} else if (BirdArray[i].LocalTicker >= 15) {
 				SDL_BlitSurface(BirdL2Image, NULL,target, &Dest);
 			}
-		} else if (BirdArray[i].Type == 1){
+		} else if (BirdArray[i].Type == 1){//Right-type
 			if (BirdArray[i].LocalTicker < 5){
 				SDL_BlitSurface(BirdR1Image, NULL,target, &Dest);
 			} else if (BirdArray[i].LocalTicker >= 5 && BirdArray[i].LocalTicker < 10 ) {

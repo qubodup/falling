@@ -24,7 +24,7 @@
 #include <stdlib.h>
 #include "filehandler.h"
 
-SDL_Surface* LifeImage;
+SDL_Surface* LifeImage = NULL;
 
 void LoadLifeImages(){
 	LifeImage = LoadImage ("life.png");
