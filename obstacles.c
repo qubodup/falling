@@ -26,6 +26,22 @@
 
 SDL_Surface* BlockImage = NULL;
 
+enum ObstacleType{
+BLOCK = 0
+};
+
+struct Obstacle{
+enum ObstacleType Type;
+int XPosition;
+int YPosition;
+};
+
+struct Obstacle Level1Obstacles [] = {
+	{0,160,32},
+	{0,240,32},
+	{0,128,128}
+};
+
 void LoadObstacleImages(){
 	BlockImage = LoadImage ("block.png");
 }
