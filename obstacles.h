@@ -24,5 +24,7 @@
 
 void LoadObstacleImages();
 void FreeObstacleImages();
+void DrawObstacles();
+void LoadLevel(int level);
 
 #endif //OBSTACLES_H
