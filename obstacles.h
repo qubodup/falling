@@ -24,7 +24,7 @@
 
 void LoadObstacleImages();
 void FreeObstacleImages();
-void DrawObstacles();
+void DrawObstacles(SDL_Surface *target);
 void LoadLevel(int level);
 
 #endif //OBSTACLES_H

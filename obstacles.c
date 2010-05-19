@@ -27,6 +27,8 @@
 SDL_Surface* BlockImage = NULL;
 SDL_Rect BlockRect;
 
+int LevelXPosition = 480;
+
 enum ObstacleType{
 BLOCK = 0
 };
@@ -55,14 +57,19 @@ void LoadLevel (int level){
 }
 
 
-void DrawObstacles(){
+void DrawObstacles(SDL_Surface *target){
 	int i = 0;
 	for (i = 0;i>3;i++)
 	{
 		BlockRect.x = LoadedLevel[i].XPosition;
 		BlockRect.y = LoadedLevel[i].YPosition;
-		if (LoadedLevel[i].Type == 0){
-			if ()
+		if (LoadedLevel[i].XPosition+LevelXPosition>-256 && LoadedLevel[i].XPosition+LevelXPosition<0){
+			if(LoadedLevel[i].Type == 0 )
+			{
+				SDL_BlitSurface(BlockImage,NULL,target,&BlockRect);
+			}
+
+			
 		}
 	}//for
 
