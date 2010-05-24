@@ -16,7 +16,7 @@
 
 */
 
-/*This file contains the loader and the "remote destructor" for files like images, sounds, etc.*/
+/*This file contains the loader and the "remote destructor" for files like images*/
 
 #include <stdio.h>
 #include "SDL.h"
@@ -42,6 +42,7 @@ SDL_Surface* LoadImage(char* file) {
 		return NULL;
 	}else{
 		tmp2 = SDL_DisplayFormatAlpha(tmp);
+		FreeImage(tmp);
 		return tmp2;
 	}
 
