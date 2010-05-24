@@ -73,10 +73,15 @@ int main(){
 	int running = 1;
 	int klicked = 0;
 	int scene = 1; 
-	SDL_Event event; 
+	SDL_Event event;
+	/*Time and Stuff*/ 
+	int LastTick = SDL_GetTicks();
+	long ElapsedTicks;
 	/*The main loop*/
 	while (running == 1)
 	{
+		ElapsedTicks = SDL_GetTicks() - LastTick;
+		LastTick = SDL_GetTicks();
 		while (SDL_PollEvent (&event))
 		{
 			klicked = 0;
@@ -124,8 +129,8 @@ int main(){
 				}
 			break;
 			case 3://The game itself
-				MoveClouds();
-				MoveBirds();
+				MoveClouds(ElapsedTicks/10);
+				MoveBirds(ElapsedTicks/10);
 				DrawBackground(screen);
 				DrawClouds(screen);
 				DrawBirds(screen);
@@ -137,6 +142,8 @@ int main(){
 	}
 	/*Ending of main loop*/
 	/*Freeing all data*/
+
+
 	FreePlayerImages();
 	FreeObstacleImages();
 	FreeLifeImages();

@@ -108,7 +108,7 @@ void DrawClouds(SDL_Surface* target){
 
 }
 
-void MoveClouds(){
+void MoveClouds(int time){
 	int i = 0;
 	if (CloudTicker == 0) {
 		CloudTicker = 1;
@@ -119,14 +119,14 @@ void MoveClouds(){
 					CloudArray[i].YPosition -=2;
 					if (CloudArray[i].YPosition < -32) {CloudArray[i].YPosition =480;}
 				}
-				CloudArray[i].XPosition++;
+				CloudArray[i].XPosition=CloudArray[i].XPosition+(1*time);
 			}else if (i >= 8){
 				if (CloudArray[i].XPosition < -63){
 					CloudArray[i].XPosition = 320;
 					CloudArray[i].YPosition +=2;
 					if (CloudArray[i].YPosition > 480) {CloudArray[i].YPosition =-32;}
 				}
-				CloudArray[i].XPosition--;
+				CloudArray[i].XPosition=CloudArray[i].XPosition-(1*time);
 			}
 		}//of for
 	}else{

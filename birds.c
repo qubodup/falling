@@ -74,12 +74,12 @@ void FreeBirdImages(){
 
 }
 
-void MoveBirds(){
+void MoveBirds(int time){
 	GlobalTicker++;//Hehehe, less work than a for loop ;)
-	BirdArray[0].XPosition --;
-	BirdArray[1].XPosition ++;
-	BirdArray[2].XPosition --;
-	BirdArray[3].XPosition ++;
+	BirdArray[0].XPosition = BirdArray[0].XPosition -(1*time);
+	BirdArray[1].XPosition = BirdArray[1].XPosition +(1*time);
+	BirdArray[2].XPosition = BirdArray[2].XPosition -(1*time);
+	BirdArray[3].XPosition = BirdArray[3].XPosition +(1*time);
 	if (GlobalTicker == 4000){GlobalTicker = 0;}
 	if (GlobalTicker == 800){BirdArray[0].XPosition = 320;
 	} else if (GlobalTicker == 1600){BirdArray[1].XPosition = -82;
