@@ -81,6 +81,7 @@ int main(){
 	while (running == 1)
 	{
 		DeltaTicks = SDL_GetTicks() - LastTick;
+		SDL_Delay(10);
 		LastTick = SDL_GetTicks();
 		while (SDL_PollEvent (&event))
 		{
@@ -131,8 +132,8 @@ int main(){
 				SDL_Flip(screen);
 			break;
 			case 3://The game itself
-				MoveClouds(DeltaTicks/10);
-				MoveBirds(DeltaTicks/10);
+				MoveClouds(DeltaTicks);
+				MoveBirds(DeltaTicks);
 				DrawBackground(screen);
 				DrawClouds(screen);
 				DrawBirds(screen);
