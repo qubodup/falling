@@ -76,13 +76,12 @@ int main(){
 	SDL_Event event;
 	/*Time and Stuff*/ 
 	int LastTick = SDL_GetTicks();
-	long DeltaTicks;
+	int Next;
 	/*The main loop*/
 	while (running == 1)
 	{
-		DeltaTicks = SDL_GetTicks() - LastTick;
-		SDL_Delay(10);
 		LastTick = SDL_GetTicks();
+		Next = LastTick + 20;
 		while (SDL_PollEvent (&event))
 		{
 			klicked = 0;
@@ -109,18 +108,13 @@ int main(){
 		switch (scene)
 		{
 			case 1://The selection screen
-				DrawBackground(screen);
-				DrawSelection(screen);
 				if (klicked == 1){
 					if (ChoosePlayerImage(event.motion.x,event.motion.y) == 1){
 						scene = 2;
 					}
 				}
-				SDL_Flip(screen);
 			break;
 			case 2://The fading in scene
-				DrawBackground(screen);
-				DrawPlayer(screen);
 				if (GetPlayerX() <144){SetPlayerX ( GetPlayerX()+1);}
 				if (GetPlayerX() >144){SetPlayerX ( GetPlayerX()-1);}
 				if (GetPlayerY() <139){SetPlayerY ( GetPlayerY()+1);}
@@ -129,19 +123,38 @@ int main(){
 					scene = 3;
 					SDL_WarpMouse(144,139);
 				}
-				SDL_Flip(screen);
 			break;
 			case 3://The game itself
-				MoveClouds(DeltaTicks);
-				MoveBirds(DeltaTicks);
-				DrawBackground(screen);
-				DrawClouds(screen);
-				DrawBirds(screen);
-				DrawPlayer(screen);
-				SDL_Flip(screen);
+				MoveClouds();
+				MoveBirds();
 			break;
 		}//end switch (scene)
-		
+		if  (SDL_GetTicks() < Next){
+			switch (scene)//Drawing all stuff
+			{
+				case 1://The selection screen
+					DrawBackground(screen);
+					DrawSelection(screen);
+					SDL_Flip(screen);
+				break;
+				case 2://The fading in scene
+					DrawBackground(screen);
+					DrawPlayer(screen);
+					SDL_Flip(screen);
+				break;
+				case 3://The game itself
+					DrawBackground(screen);
+					DrawClouds(screen);
+					DrawBirds(screen);
+					DrawPlayer(screen);
+					SDL_Flip(screen);
+				break;
+			}//end switch (scene)
+			if (SDL_GetTicks() < Next)
+			{
+				SDL_Delay(Next-SDL_GetTicks());
+			}
+		}		
 		
 	}
 	/*Ending of main loop*/

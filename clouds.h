@@ -22,7 +22,7 @@
 #define CLOUDS_H
 
 void DrawClouds(SDL_Surface *target);
-void MoveClouds(int time);
+void MoveClouds();
 void LoadCloudImages();
 void FreeCloudImages();
 

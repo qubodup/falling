@@ -72,15 +72,7 @@ void LoadCloudImages(){
 	CloudLineImage = LoadImage ("cloud_line.png");
 }
 
-int CloudTimeChecker(int input)
-{
-	if (input<10)
-	{
-		return 10;
-	} else{
-		return input;
-	}
-}
+
 
 void DrawClouds(SDL_Surface* target){
 	int i = 0;
@@ -129,14 +121,14 @@ void MoveClouds(int time){
 					CloudArray[i].YPosition -=2;
 					if (CloudArray[i].YPosition < -32) {CloudArray[i].YPosition =480;}
 				}
-				CloudArray[i].XPosition=CloudArray[i].XPosition+(0.1*CloudTimeChecker(time));
+				CloudArray[i].XPosition=CloudArray[i].XPosition+1;
 			}else if (i >= 8){
 				if (CloudArray[i].XPosition < -63){
 					CloudArray[i].XPosition = 320;
 					CloudArray[i].YPosition +=2;
 					if (CloudArray[i].YPosition > 480) {CloudArray[i].YPosition =-32;}
 				}
-				CloudArray[i].XPosition=CloudArray[i].XPosition-(0.1*CloudTimeChecker(time));
+				CloudArray[i].XPosition=CloudArray[i].XPosition-1;
 			}
 		}//of for
 	}else{

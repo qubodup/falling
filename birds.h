@@ -22,7 +22,7 @@
 #define BIRDS_H
 
 void DrawBirds(SDL_Surface *target);
-void MoveBirds(int time);
+void MoveBirds();
 void LoadBirdImages();
 void FreeBirdImages();
 
