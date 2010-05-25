@@ -76,11 +76,11 @@ int main(){
 	SDL_Event event;
 	/*Time and Stuff*/ 
 	int LastTick = SDL_GetTicks();
-	long ElapsedTicks;
+	long DeltaTicks;
 	/*The main loop*/
 	while (running == 1)
 	{
-		ElapsedTicks = SDL_GetTicks() - LastTick;
+		DeltaTicks = SDL_GetTicks() - LastTick;
 		LastTick = SDL_GetTicks();
 		while (SDL_PollEvent (&event))
 		{
@@ -115,6 +115,7 @@ int main(){
 						scene = 2;
 					}
 				}
+				SDL_Flip(screen);
 			break;
 			case 2://The fading in scene
 				DrawBackground(screen);
@@ -127,18 +128,20 @@ int main(){
 					scene = 3;
 					SDL_WarpMouse(144,139);
 				}
+				SDL_Flip(screen);
 			break;
 			case 3://The game itself
-				MoveClouds(ElapsedTicks/10);
-				MoveBirds(ElapsedTicks/10);
+				MoveClouds(DeltaTicks/10);
+				MoveBirds(DeltaTicks/10);
 				DrawBackground(screen);
 				DrawClouds(screen);
 				DrawBirds(screen);
 				DrawPlayer(screen);
+				SDL_Flip(screen);
 			break;
 		}//end switch (scene)
-		SDL_Flip(screen);
-		SDL_Delay(10);
+		
+		
 	}
 	/*Ending of main loop*/
 	/*Freeing all data*/
