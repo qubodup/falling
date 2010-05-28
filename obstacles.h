@@ -21,7 +21,7 @@
 #ifndef OBSTACLES_H
 #define OBSTACLES_H
 
-
+void ScrollLevel();
 void LoadObstacleImages();
 void FreeObstacleImages();
 void DrawObstacles(SDL_Surface *target);

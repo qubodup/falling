@@ -73,6 +73,7 @@ int main(){
 	int running = 1;
 	int klicked = 0;
 	int scene = 1; 
+	int actuallevel = 1;
 	SDL_Event event;
 	/*Time and Stuff*/ 
 	int LastTick = SDL_GetTicks();
@@ -111,6 +112,7 @@ int main(){
 				if (klicked == 1){
 					if (ChoosePlayerImage(event.motion.x,event.motion.y) == 1){
 						scene = 2;
+						LoadLevel (1);
 					}
 				}
 			break;
@@ -121,10 +123,10 @@ int main(){
 				if (GetPlayerY() >139){SetPlayerY ( GetPlayerY()-1);}
 				if (GetPlayerY() == 139 && GetPlayerX() == 144){
 					scene = 3;
-					SDL_WarpMouse(144,139);
 				}
 			break;
 			case 3://The game itself
+				ScrollLevel();
 				MoveClouds();
 				MoveBirds();
 			break;
@@ -147,6 +149,7 @@ int main(){
 					DrawClouds(screen);
 					DrawBirds(screen);
 					DrawPlayer(screen);
+					DrawObstacles(screen);
 					SDL_Flip(screen);
 				break;
 			}//end switch (scene)
