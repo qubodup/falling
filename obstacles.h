@@ -25,6 +25,7 @@ void ScrollLevel();
 void LoadObstacleImages();
 void FreeObstacleImages();
 void DrawObstacles(SDL_Surface *target);
-void LoadLevel(int level);
+void LoadLevel();
+void SetActualLevelNumber(int input);
 
 #endif //OBSTACLES_H

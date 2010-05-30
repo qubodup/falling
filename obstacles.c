@@ -16,7 +16,7 @@
 
 */
 
-/*This file contains the obstacles stuff*/
+/*This file contains the obstacles stuff and the levels*/
 
 #include <stdio.h>
 #include "SDL.h"
@@ -27,6 +27,7 @@
 SDL_Surface* BlockImage = NULL;
 SDL_Rect BlockRect;
 
+int ActualLevelNumber;
 int LevelYPosition;
 
 enum ObstacleType{
@@ -47,12 +48,15 @@ struct Obstacle LevelOneObstacles [3] = {
 	{0,128,128}
 };
 
+void SetActualLevelNumber(int input){
+	ActualLevelNumber = input;
+}
 
-void LoadLevel (int level){
+void LoadLevel (){
 	LevelYPosition = 1000;
 	int i;
 	for (i = 0; i < 3;i++){
-		if (level==1 ){LoadedLevel[i] = LevelOneObstacles[i];}
+		if (ActualLevelNumber==1 ){LoadedLevel[i] = LevelOneObstacles[i];}
 
 	}
 }

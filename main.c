@@ -53,7 +53,7 @@ int main(){
 		printf("SDL initialized!\n");
 	}
 
-	screen = SDL_SetVideoMode(320, 480, 16, SDL_SWSURFACE);
+	screen = SDL_SetVideoMode(320, 480, 16, SDL_HWSURFACE);
 	if (screen == NULL) {
 		fprintf(stderr, "Unable to set video mode: %s\n", SDL_GetError());
 		exit(1);
@@ -73,7 +73,6 @@ int main(){
 	int running = 1;
 	int klicked = 0;
 	int scene = 1; 
-	int actuallevel = 1;
 	SDL_Event event;
 	/*Time and Stuff*/ 
 	int LastTick = SDL_GetTicks();
@@ -112,7 +111,8 @@ int main(){
 				if (klicked == 1){
 					if (ChoosePlayerImage(event.motion.x,event.motion.y) == 1){
 						scene = 2;
-						LoadLevel (1);
+						SetActualLevelNumber(1);
+						LoadLevel();
 					}
 				}
 			break;
