@@ -21,7 +21,10 @@
 #ifndef LIFES_H
 #define LIFES_H
 
-
+void ResetLifeCount();
+void LoseLife();
+int GetLifeCount();
+//void DrawLifeBar();
 void LoadLifeImages();
 void FreeLifeImages();
 

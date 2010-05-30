@@ -25,6 +25,19 @@
 #include "filehandler.h"
 
 SDL_Surface* LifeImage = NULL;
+int LifeCount = 3;
+
+void ResetLifeCount(){
+LifeCount = 3;
+}
+
+void LoseLife(){
+LifeCount--;
+}
+
+int GetLifeCount(){
+return LifeCount;
+}
 
 void LoadLifeImages(){
 	LifeImage = LoadImage ("life.png");
