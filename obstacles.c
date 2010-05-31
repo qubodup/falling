@@ -23,6 +23,7 @@
 #include "SDL_image.h"
 #include <stdlib.h>
 #include "filehandler.h"
+#include "player.h"
 
 SDL_Surface* BlockImage = NULL;
 SDL_Rect BlockRect;
@@ -43,13 +44,41 @@ int YPosition;
 struct Obstacle LoadedLevel[3];
 
 struct Obstacle LevelOneObstacles [3] = {
-	{0,160,32},
-	{0,240,32},
-	{0,128,128}
+	{0,64,32},
+	{0,260,32},
+	{0,128,32}
 };
 
 void SetActualLevelNumber(int input){
 	ActualLevelNumber = input;
+}
+
+int CollisionCheck(){
+	int Collide;
+	int i;
+	for (i=0; i<3; i++)
+	{
+		if (((GetPlayerX() > LoadedLevel[i].XPosition && GetPlayerX() < LoadedLevel[i].XPosition+32)||
+		(GetPlayerX()+32 > LoadedLevel[i].XPosition && GetPlayerX()+32 < LoadedLevel[i].XPosition+32))
+		&& GetPlayerY()+32 > LoadedLevel[i].YPosition+LevelYPosition )
+		{
+			Collide = 1;
+		}else{
+			Collide = 0;
+		}
+	}
+	if (Collide == 1)
+	{
+		return 1;	
+	}else{
+		return 0;
+	}
+	
+
+}
+
+void SetLevelYPosition(int input){
+	LevelYPosition = input;
 }
 
 void LoadLevel (){

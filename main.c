@@ -130,6 +130,15 @@ int main(){
 				ScrollLevel();
 				MoveClouds();
 				MoveBirds();
+				if (CollisionCheck() == 1)
+				{
+					LoseLife();
+				} 
+				if (GetLifeCount() == 0)
+				{
+					scene = 1;
+				}
+				
 			break;
 		}//end switch (scene)
 		if  (SDL_GetTicks() < Next){

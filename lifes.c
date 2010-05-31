@@ -23,6 +23,7 @@
 #include "SDL_image.h"
 #include <stdlib.h>
 #include "filehandler.h"
+#include "obstacles.h"
 
 SDL_Surface* LifeImage = NULL;
 SDL_Surface* BarImage = NULL;
@@ -49,6 +50,7 @@ RecreateBar();
 void LoseLife(){
 LifeCount--;
 RecreateBar();
+SetLevelYPosition(1000);
 }
 
 int GetLifeCount(){
