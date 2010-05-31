@@ -24,7 +24,7 @@
 void ResetLifeCount();
 void LoseLife();
 int GetLifeCount();
-//void DrawLifeBar();
+void DrawLifeBar(SDL_Surface *target);
 void LoadLifeImages();
 void FreeLifeImages();
 

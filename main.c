@@ -113,6 +113,7 @@ int main(){
 						scene = 2;
 						SetActualLevelNumber(1);
 						LoadLevel();
+						ResetLifeCount();
 					}
 				}
 			break;
@@ -150,6 +151,7 @@ int main(){
 					DrawBirds(screen);
 					DrawPlayer(screen);
 					DrawObstacles(screen);
+					DrawLifeBar(screen);
 					SDL_Flip(screen);
 				break;
 			}//end switch (scene)
