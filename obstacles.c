@@ -54,7 +54,7 @@ void SetActualLevelNumber(int input){
 }
 
 int CollisionCheck(){
-	int Collide;
+	int Collide = 0;
 	int i;
 	for (i=0; i<3; i++)
 	{
@@ -63,8 +63,6 @@ int CollisionCheck(){
 		&& GetPlayerY()+38 > LoadedLevel[i].YPosition+LevelYPosition && GetPlayerY() < LoadedLevel[i].YPosition+LevelYPosition+32 )
 		{
 			Collide = 1;
-		}else{
-			Collide = 0;
 		}
 	}
 	if (Collide == 1)
