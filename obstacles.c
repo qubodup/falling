@@ -41,12 +41,27 @@ int XPosition;
 int YPosition;
 };
 
-struct Obstacle LoadedLevel[3];
+struct Obstacle LoadedLevel[32];
 
-struct Obstacle LevelOneObstacles [3] = {
+struct Obstacle LevelOneObstacles [32] = {
 	{0,64,32},
-	{0,260,32},
-	{0,128,32}
+	{0,230,32},
+	{0,128,64},
+	{0,164,128},
+	{0,160,232},
+	{0,14,822},
+	{0,64,932},
+	{0,260,732},
+	{0,128,432},
+	{0,32,482},
+	{0,240,532},
+	{0,340,632},
+	{0,126,355},
+	{0,260,777},
+	{0,133,832},
+	{0,164,922},
+	{0,24,266},
+	{0,228,999}
 };
 
 void SetActualLevelNumber(int input){
@@ -56,7 +71,7 @@ void SetActualLevelNumber(int input){
 int CollisionCheck(){
 	int Collide = 0;
 	int i;
-	for (i=0; i<3; i++)
+	for (i=0; i<32; i++)
 	{
 		if (((GetPlayerX() > LoadedLevel[i].XPosition && GetPlayerX() < LoadedLevel[i].XPosition+32)||
 		(GetPlayerX()+32 > LoadedLevel[i].XPosition && GetPlayerX()+32 < LoadedLevel[i].XPosition+32))
@@ -82,7 +97,7 @@ void SetLevelYPosition(int input){
 void LoadLevel (){
 	LevelYPosition = 1000;
 	int i;
-	for (i = 0; i < 3;i++){
+	for (i = 0; i < 32;i++){
 		if (ActualLevelNumber==1 ){LoadedLevel[i] = LevelOneObstacles[i];}
 
 	}
@@ -95,7 +110,7 @@ LevelYPosition-=6;
 
 void DrawObstacles(SDL_Surface *target){
 	int i = 0;
-	for (i = 0;i<3;i++)
+	for (i = 0;i<32;i++)
 	{
 		BlockRect.x = LoadedLevel[i].XPosition;
 		BlockRect.y = LoadedLevel[i].YPosition+LevelYPosition;
