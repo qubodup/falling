@@ -60,7 +60,7 @@ int CollisionCheck(){
 	{
 		if (((GetPlayerX() > LoadedLevel[i].XPosition && GetPlayerX() < LoadedLevel[i].XPosition+32)||
 		(GetPlayerX()+32 > LoadedLevel[i].XPosition && GetPlayerX()+32 < LoadedLevel[i].XPosition+32))
-		&& GetPlayerY()+32 > LoadedLevel[i].YPosition+LevelYPosition )
+		&& GetPlayerY()+38 > LoadedLevel[i].YPosition+LevelYPosition && GetPlayerY() < LoadedLevel[i].YPosition+LevelYPosition+32 )
 		{
 			Collide = 1;
 		}else{

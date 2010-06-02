@@ -29,5 +29,6 @@ int GetPlayerX();
 int GetPlayerY();
 void SetPlayerX(int x);
 void SetPlayerY(int y);
+void MovePlayer(int x);
 
 #endif //PLAYER_H

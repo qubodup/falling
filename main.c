@@ -128,6 +128,7 @@ int main(){
 			break;
 			case 3://The game itself
 				ScrollLevel();
+				MovePlayer(event.motion.x);
 				MoveClouds();
 				MoveBirds();
 				if (CollisionCheck() == 1)

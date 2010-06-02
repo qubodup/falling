@@ -33,24 +33,32 @@ SDL_Surface* Egg4Image = NULL;
 SDL_Rect EGame;//The player position
 /*Setter and getter*/
 void SetPlayerX (int x){
-EGame.x = x;
+	EGame.x = x;
 }
 
 void SetPlayerY (int y){
-EGame.y = y;
+	EGame.y = y;
 }
 
 int GetPlayerX(){
-return EGame.x; 
+	return EGame.x; 
 }
 
 int GetPlayerY(){
-return EGame.y;
+	return EGame.y;
 }
 
 SDL_Rect E1,E2,E3,E4;//The selection positions
 
+void MovePlayer(int x){
+	if (x < EGame.x){
+		EGame.x-=5;
+	}
+	if (x > EGame.x+32){
+		EGame.x+=5;
+	}
 
+}
 
 void LoadPlayerImages(){
 	Egg1Image = LoadImage ("egg.png");
