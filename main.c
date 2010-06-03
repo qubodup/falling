@@ -135,7 +135,7 @@ int main(){
 				{
 					LoseLife();
 				} 
-				if (GetLifeCount() == 0)
+				if (GetLifeCount() == 0||GetLevelYPosition() < -1800)
 				{
 					scene = 1;
 				}

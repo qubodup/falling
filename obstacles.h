@@ -29,5 +29,6 @@ void LoadLevel();
 void SetActualLevelNumber(int input);
 int CollisionCheck();
 void SetLevelYPosition(int input);
+int GetLevelYPosition();
 
 #endif //OBSTACLES_H

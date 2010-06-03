@@ -68,8 +68,8 @@ void SetActualLevelNumber(int input){
 	ActualLevelNumber = input;
 }
 
-int CollisionCheck(){
-	int Collide = 0;
+int CollisionCheck(){//too bad it works only for the blocks,
+	int Collide = 0;//so if you want to fork the game, you better rewrite it.
 	int i;
 	for (i=0; i<32; i++)
 	{
@@ -90,9 +90,15 @@ int CollisionCheck(){
 
 }
 
+
+//Getter and Setter for LevelYPosition
 void SetLevelYPosition(int input){
 	LevelYPosition = input;
 }
+int GetLevelYPosition(){
+	return LevelYPosition;
+}
+//
 
 void LoadLevel (){
 	LevelYPosition = 1000;
